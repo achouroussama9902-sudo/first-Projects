@@ -1,225 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oussama Portfolio</title>
+    <title>Oussama Portfolio & Brother Art</title>
     <style>
-        /* استيراد الخط الاحترافي */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+        /* استيراد الخطوط */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;700&display=swap');
 
-        /* إعدادات الصفحة العامة */
+        /* إعدادات عامة */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-            scroll-behavior: smooth; /* تجعل التنقل ناعماً بين الأقسام */
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: rgb(21, 23, 35);
+            background-color: #05070a;
             color: white;
             overflow-x: hidden;
         }
 
-        /* تنسيق الهيدر (رأس الصفحة) */
+        /* الهيدر */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 50px;
+            padding: 1rem 10%;
+            background: #0a0e14;
+            border-bottom: 2px solid #ff1909;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .logo img {
-            height: 60px;
-            width: auto;
-            display: block;
-        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #ff1909; font-family: 'Poppins'; }
+        
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { text-decoration: none; color: white; transition: 0.3s; font-size: 1.1rem; }
+        nav a:hover { color: #ff1909; }
 
-        .navi ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .navi a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .navi a:hover {
-            color: rgb(255, 25, 9); /* تغيير اللون للأحمر عند تمرير الماوس */
-        }
-
-        hr {
-            opacity: 10%;
-            border: 0.5px solid white;
-        }
-
-        /* تنسيق قسم الواجهة (Hero) */
+        /* قسم أسامة (الواجهة) */
         .hero {
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 85vh;
             text-align: center;
+            background: radial-gradient(circle, #1a1f2b 0%, #05070a 100%);
+            padding: 20px;
         }
 
-        .name {
-            font-size: 5rem;
+        .hero h1 { font-size: clamp(3rem, 10vw, 5rem); margin-bottom: 10px; font-family: 'Poppins'; }
+        .hero h1 span { color: #ff1909; }
+        .hero p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; }
+
+        /* قسم معرض رسومات الأخ */
+        .gallery-section {
+            padding: 80px 10%;
+            background-color: #05070a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
             color: white;
         }
 
-        .name span {
-            color: rgb(255, 25, 9);
-        }
+        .section-title span { color: #ff1909; }
 
-        .email-display {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
-
-        /* تنسيق قسم المشاريع (Projects) */
-        .projects {
-            padding: 100px 10%;
-            text-align: center;
-        }
-
-        .title {
-            font-size: 3rem;
-            margin-bottom: 50px;
-        }
-
-        .title span {
-            color: rgb(255, 25, 9);
-        }
-
-        .projects-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .project-box {
-            background-color: #1f2235;
-            padding: 25px;
-            border-radius: 15px;
-            width: 320px;
-            transition: 0.5s ease;
-            border: 1px solid transparent;
+        .art-card {
+            background-color: #121821;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #1e293b;
+            transition: 0.4s;
+            text-align: center;
         }
 
-        .project-box:hover {
-            border-color: rgb(255, 25, 9);
-            transform: translateY(-15px);
+        .art-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff1909;
+            box-shadow: 0 10px 30px rgba(255, 25, 9, 0.3);
         }
 
-        .project-box img {
+        .art-card img {
             width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 2px solid #1e293b;
         }
 
-        .project-box h3 {
-            margin-bottom: 10px;
-        }
+        .art-card h3 { padding: 15px 10px 5px; font-size: 1.4rem; }
 
-        .project-box p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .project-box .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: rgb(255, 25, 9);
+        /* زر اللايك */
+        .like-section { padding: 15px 0 25px; }
+        .like-btn {
+            background: #1e293b;
+            border: 2px solid #3b82f6;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
             transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
         }
 
-        .project-box .btn:hover {
-            background-color: white;
-            color: rgb(255, 25, 9);
+        .like-btn.active {
+            background: #ff1909;
+            border-color: #ff1909;
+        }
+
+        .like-btn:hover { transform: scale(1.1); }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #0a0e14;
+            color: #475569;
+            border-top: 1px solid #1e293b;
         }
     </style>
 </head>
 <body>
 
-    <header id="home">
-        <div class="logo">
-            <img src="https://i.postimg.cc/m2f6vX8m/logo-placeholder.png" alt="Oussama Logo">
-        </div>
-        
-        <nav class="navi">
+    <header>
+        <div class="logo">OUSSAMA<span>.DEV</span></div>
+        <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects-section">Projects</a></li>
-                <li><a href="mailto:oussamaanavom@gmail.com">Contact</a></li>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#gallery">رسومات أخي</a></li>
+                <li><a href="mailto:navomoussamaa@gmail.com">اتصل بي</a></li>
             </ul>
         </nav>
     </header>
 
-    <hr>
-<section class="hero">
-        <h1 class="name">I AM <span>OUSSAMA</span></h1>
-        <p class="email-display">navomoussamaa@gmail.com</p>
+    <section class="hero" id="home">
+        <h1>I AM <span>OUSSAMA</span></h1>
+        <p>مرحباً بكم في موقعي المتطور، حيث أعرض مشاريعي البرمجية ومعرض الرسومات الخاص بأخي المبدع.</p>
     </section>
 
-    <section class="projects" id="projects-section">
-        <h2 class="title">My <span>Projects</span></h2>
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">معرض رسومات <span>Poppy Playtime</span></h2>
         
-        <div class="projects-container">
-            <div class="project-box">
-                <img src="https://via.placeholder.com/300x200" alt="Web Project">
-                <h3>Web Design</h3>
-                <p>تصميم واجهات احترافية تتناسب مع جميع الشاشات باستخدام أحدث التقنيات.</p>
-                <a href="#" class="btn">View Project</a>
+        <div class="gallery">
+            <div class="art-card">
+                <img src="https://static.wikia.nocookie.net/poppy-playtime/images/0/03/Huggy_Wuggy_Render.png" alt="Huggy Wuggy">
+                <h3>هاجي واجي</h3>
+                <div class="like-section">
+                    <button class="like-btn" onclick="toggleLike(this)">
+                        <span>❤</span> <span class="count">0</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="project-box">
-                <img src="https://via.placeholder.com/300x200" alt="App Project">
-                <h3>App Development</h3>
-                <p>بناء تطبيقات هواتف ذكية سريعة وفعالة توفر أفضل تجربة للمستخدم.</p>
-                <a href="#" class="btn">View Project</a>
+            <div class="art-card">
+                <img src="https://static.wikia.nocookie.net/poppy-playtime/images/b/ba/Mommy_Long_Legs_Render.png" alt="Mommy Long Legs">
+                <h3>مامي لونج ليجز</h3>
+                <div class="like-section">
+                    <button class="like-btn" onclick="toggleLike(this)">
+                        <span>❤</span> <span class="count">0</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="project-box">
-                <img src="https://via.placeholder.com/300x200" alt="Design Project">
-                <h3>UI/UX Design</h3>
-                <p>تحليل وتصميم رحلة المستخدم لجعل التعامل مع المواقع أسهل وأجمل.</p>
-                <a href="#" class="btn">View Project</a>
+            <div class="art-card">
+                <img src="https://static.wikia.nocookie.net/poppy-playtime/images/0/06/Boxy_Boo_Render.png" alt="Boxy Boo">
+                <h3>بوكسي بو</h3>
+                <div class="like-section">
+                    <button class="like-btn" onclick="toggleLike(this)">
+                        <span>❤</span> <span class="count">0</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
-<div class="projects-container">
-    <div class="project-box">
-        <img src="msg.docx" alt="Web Project">
-        <h3>Web Design</h3>
-        
-    </div>
 
-    <div class="project-box">
-        <img src="رابط_صورتك_هنا.png" alt="App Project">
-        <h3>App Development</h3>
-        ...
-    </div>
-</div>
+    <footer>
+        تصميم المبرمج أسامة 🚀 | جميع الحقوق محفوظة 2026
+    </footer>
+
+    <script>
+        function toggleLike(btn) {
+            const countSpan = btn.querySelector('.count');
+            let currentCount = parseInt(countSpan.innerText);
+            
+            btn.classList.toggle('active');
+            
+            if (btn.classList.contains('active')) {
+                countSpan.innerText = currentCount + 1;
+            } else {
+                countSpan.innerText = currentCount - 1;
+            }
+        }
+    </script>
+
 </body>
-
-
 </html>
-
